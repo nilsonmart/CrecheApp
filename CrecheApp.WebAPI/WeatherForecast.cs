@@ -1,6 +1,6 @@
 using System;
 
-namespace CrecheApp
+namespace CrecheApp.WebAPI
 {
     public class WeatherForecast
     {
