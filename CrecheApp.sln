@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrecheApp.Domain", "CrecheA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrecheApp.Infrastructure", "CrecheApp.Infrastructure\CrecheApp.Infrastructure.csproj", "{6C847419-FA60-4282-B87C-CA873EC22598}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrecheApp.Service", "CrecheApp.Service\CrecheApp.Service.csproj", "{63BAF4A4-E8EA-43CF-9DD4-46815E08BDB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6C847419-FA60-4282-B87C-CA873EC22598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C847419-FA60-4282-B87C-CA873EC22598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C847419-FA60-4282-B87C-CA873EC22598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63BAF4A4-E8EA-43CF-9DD4-46815E08BDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63BAF4A4-E8EA-43CF-9DD4-46815E08BDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63BAF4A4-E8EA-43CF-9DD4-46815E08BDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63BAF4A4-E8EA-43CF-9DD4-46815E08BDB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

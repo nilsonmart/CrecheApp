@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interface\" />
-    <Folder Include="Entity\" />
-    <Folder Include="Model\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Dto\" />
+    <Folder Include="FluentValidation\" />
   </ItemGroup>
 
 </Project>
