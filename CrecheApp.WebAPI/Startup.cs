@@ -40,13 +40,13 @@ namespace CrecheApp.WebAPI
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Account, AccountDTO>();
+                cfg.CreateMap<Account, AccountDto>();
                 cfg.AddProfile<OrganizationProfile>();
             });
 
             services.AddMvc().AddFluentValidation();
 
-            services.AddTransient<IValidator<Account>, AccountValidator>();
+            services.AddTransient<IValidator<AccountDto>, AccountValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

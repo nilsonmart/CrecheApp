@@ -11,7 +11,7 @@ namespace CrecheApp.Domain.Model
     {
         public OrganizationProfile()
         {
-            CreateMap<Account, AccountDTO>();
+            CreateMap<Account, AccountDto>();
         }
     }
 }

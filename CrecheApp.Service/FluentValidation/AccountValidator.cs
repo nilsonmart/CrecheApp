@@ -1,9 +1,10 @@
-﻿using CrecheApp.Domain.Entity;
+﻿using CrecheApp.Domain.Dto;
 using FluentValidation;
 
 namespace CrecheApp.Service.FluentValidation
 {
-    public class AccountValidator : AbstractValidator<Account>
+    public class AccountValidator : AbstractValidator<AccountDto
+        >
     {
         public AccountValidator()
         {
