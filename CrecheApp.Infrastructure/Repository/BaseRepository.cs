@@ -1,5 +1,6 @@
 ﻿using CrecheApp.Domain.Interface.Repository;
 using CrecheApp.Infrastructure.Context;
+using System;
 using System.Linq;
 
 namespace CrecheApp.Infrastructure.Repository
@@ -38,6 +39,11 @@ namespace CrecheApp.Infrastructure.Repository
         public TEntity GetById(int id)
         {
             return _crecheAppContext.Set<TEntity>().Find(id);
+        }
+
+        public TEntity GetByGlobalId(Guid globalId)
+        {
+            return _crecheAppContext.Set<TEntity>().Find(globalId);
         }
 
         public void Update(TEntity entity)
