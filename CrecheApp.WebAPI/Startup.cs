@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using CrecheApp.Domain.Dto;
 using CrecheApp.Domain.Entity;
-using CrecheApp.Domain.Model;
+using CrecheApp.Domain.Interface.Repository;
 using CrecheApp.Infrastructure.Context;
+using CrecheApp.Infrastructure.Repository;
 using CrecheApp.Service.FluentValidation;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -39,14 +39,10 @@ namespace CrecheApp.WebAPI
             services.AddDbContext<CrecheAppContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Account, AccountDto>();
-                cfg.AddProfile<OrganizationProfile>();
-            });
-
             services.AddMvc().AddFluentValidation();
 
             services.AddTransient<IValidator<AccountDto>, AccountValidator>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

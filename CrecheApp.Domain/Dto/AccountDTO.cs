@@ -10,9 +10,6 @@ namespace CrecheApp.Domain.Dto
         public string CreationUser { get; set; }
         public DateTime CreationDate { get; set; }
         public string LastChangeUser { get; set; }
-        public DateTime LastChangeDate { get; set; }
-        public string DeviceId { get; set; }
-        public string IPAddress { get; set; }
-        public string Location { get; set; }
+        public DateTime? LastChangeDate { get; set; }
     }
 }

@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-using CrecheApp.Domain.Dto;
+﻿using CrecheApp.Domain.Dto;
 using CrecheApp.Domain.Entity;
 using CrecheApp.Domain.Interface.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace CrecheApp.WebAPI.Controllers
 {
@@ -11,11 +11,9 @@ namespace CrecheApp.WebAPI.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IMapper _mapper;
         private readonly IAccountRepository _accountRepository;
-        public AccountController(IMapper mapper, IAccountRepository accountRepository)
+        public AccountController(IAccountRepository accountRepository)
         {
-            _mapper = mapper;
             _accountRepository = accountRepository;
         }
 
@@ -27,8 +25,11 @@ namespace CrecheApp.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var model = _mapper.Map<Account>(account);
-            _accountRepository.Add(model);
+            var entity = ConvertToEntity(account);
+            entity.GlobalId = Guid.NewGuid();
+            entity.CreationUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            entity.CreationDate = DateTime.UtcNow;
+            _accountRepository.Add(entity);
             return Ok();
         }
 
@@ -45,8 +46,8 @@ namespace CrecheApp.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var model = _mapper.Map<Account>(account);
-            _accountRepository.Update(model);
+            var entity =ConvertToEntity(account);
+            _accountRepository.Update(entity);
             return Ok();
         }
 
@@ -65,6 +66,46 @@ namespace CrecheApp.WebAPI.Controllers
             }
             _accountRepository.Delete(model);
             return Ok();
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var domain = _accountRepository.GetAll();
+            if (domain == null)
+            {
+                return BadRequest();
+            }
+            domain.ToList().ForEach(account => ConvertToDomain(account));
+            return Ok(domain);
+        }
+
+        private Account ConvertToEntity(AccountDto accountDto)
+        {
+            return new Account
+            {
+                Id = accountDto.Id,
+                GlobalId = accountDto.GlobalId,
+                Name = accountDto.Name,
+                CreationUser = accountDto.CreationUser,
+                CreationDate = accountDto.CreationDate,
+                LastChangeUser = accountDto.LastChangeUser,
+                LastChangeDate = accountDto.LastChangeDate,
+            };
+        }
+
+        private AccountDto ConvertToDomain(Account account)
+        {
+            return new AccountDto
+            {
+                Id = account.Id,
+                GlobalId = account.GlobalId,
+                Name = account.Name,
+                CreationUser = account.CreationUser,
+                CreationDate = account.CreationDate,
+                LastChangeUser = account.LastChangeUser,
+                LastChangeDate = account.LastChangeDate,
+            };
         }
     }
 }

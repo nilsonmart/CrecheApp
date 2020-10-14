@@ -9,9 +9,6 @@ namespace CrecheApp.Domain.Interface.Model
         string CreationUser { get; set; }
         DateTime CreationDate { get; set; }
         string LastChangeUser { get; set; }
-        DateTime LastChangeDate { get; set; }
-        string DeviceId { get; set; }
-        string IPAddress { get; set; }
-        string Location { get; set; }
+        DateTime? LastChangeDate { get; set; }
     }
 }
