@@ -1,6 +1,7 @@
 ﻿using CrecheApp.Domain.Dto;
 using CrecheApp.Domain.Entity;
 using CrecheApp.Domain.Interface.Repository;
+using CrecheApp.Domain.Interface.Service;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -12,9 +13,11 @@ namespace CrecheApp.WebAPI.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IAccountRepository _accountRepository;
-        public AccountController(IAccountRepository accountRepository)
+        private readonly IAccountService _accountService;
+        public AccountController(IAccountRepository accountRepository, IAccountService accountService)
         {
             _accountRepository = accountRepository;
+            _accountService = accountService;
         }
 
         [HttpPost]
@@ -24,12 +27,7 @@ namespace CrecheApp.WebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            var entity = ConvertToEntity(account);
-            entity.GlobalId = Guid.NewGuid();
-            entity.CreationUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            entity.CreationDate = DateTime.UtcNow;
-            _accountRepository.Add(entity);
+            _accountService.Add(account);
             return Ok();
         }
 
@@ -45,9 +43,7 @@ namespace CrecheApp.WebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            var entity =ConvertToEntity(account);
-            _accountRepository.Update(entity);
+            _accountService.Update(account);
             return Ok();
         }
 
@@ -59,53 +55,25 @@ namespace CrecheApp.WebAPI.Controllers
             {
                 return BadRequest("globalId empty");
             }
-            var model = _accountRepository.GetByGlobalId(globalId.Value);
-            if (model == null)
-            {
-                return NotFound($"Account: {globalId} not found.");
-            }
-            _accountRepository.Delete(model);
+            _accountService.Delete(globalId.Value);
             return Ok();
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var domain = _accountRepository.GetAll();
-            if (domain == null)
+            return Ok(_accountService.GetAll());
+        }
+
+        [HttpGet]
+        [Route("{globalId:guid}")]
+        public IActionResult GetByGlobalId(Guid? globalId)
+        {
+            if (globalId == null)
             {
-                return BadRequest();
+                return BadRequest("globalId empty");
             }
-            domain.ToList().ForEach(account => ConvertToDomain(account));
-            return Ok(domain);
-        }
-
-        private Account ConvertToEntity(AccountDto accountDto)
-        {
-            return new Account
-            {
-                Id = accountDto.Id,
-                GlobalId = accountDto.GlobalId,
-                Name = accountDto.Name,
-                CreationUser = accountDto.CreationUser,
-                CreationDate = accountDto.CreationDate,
-                LastChangeUser = accountDto.LastChangeUser,
-                LastChangeDate = accountDto.LastChangeDate,
-            };
-        }
-
-        private AccountDto ConvertToDomain(Account account)
-        {
-            return new AccountDto
-            {
-                Id = account.Id,
-                GlobalId = account.GlobalId,
-                Name = account.Name,
-                CreationUser = account.CreationUser,
-                CreationDate = account.CreationDate,
-                LastChangeUser = account.LastChangeUser,
-                LastChangeDate = account.LastChangeDate,
-            };
+            return Ok(_accountService.GetByGlobalId(globalId.Value));
         }
     }
 }

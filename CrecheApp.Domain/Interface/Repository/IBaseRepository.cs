@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CrecheApp.Domain.Interface.Repository
 {
@@ -9,7 +8,7 @@ namespace CrecheApp.Domain.Interface.Repository
         void Add(TEntity entity);
         TEntity GetById(int id);
         TEntity GetByGlobalId(Guid globalId);
-        IQueryable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll();
         void Update(TEntity entity);
         void Delete(TEntity entity);
     }

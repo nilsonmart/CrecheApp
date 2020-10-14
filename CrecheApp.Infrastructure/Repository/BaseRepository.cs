@@ -1,7 +1,7 @@
 ﻿using CrecheApp.Domain.Interface.Repository;
 using CrecheApp.Infrastructure.Context;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace CrecheApp.Infrastructure.Repository
 {
@@ -31,7 +31,7 @@ namespace CrecheApp.Infrastructure.Repository
             _crecheAppContext.Dispose();
         }
 
-        public IQueryable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return _crecheAppContext.Set<TEntity>();
         }
