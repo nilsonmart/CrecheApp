@@ -5,7 +5,6 @@ using CrecheApp.Domain.Interface.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CrecheApp.Service
 {
@@ -18,7 +17,7 @@ namespace CrecheApp.Service
             _accountRepository = accountRepository;
         }
 
-        public void Add(AccountDto entity)
+        public void Add(AccountModel entity)
         {
             var retval = ConvertToEntity(entity);
             retval.GlobalId = Guid.NewGuid();
@@ -37,7 +36,7 @@ namespace CrecheApp.Service
             _accountRepository.Delete(model);
         }
 
-        public IEnumerable<AccountDto> GetAll()
+        public IEnumerable<AccountModel> GetAll()
         {
             var retval = _accountRepository.GetAll().ToList();
             if (retval == null)
@@ -47,7 +46,7 @@ namespace CrecheApp.Service
             return retval.Select(account => ConvertToDomain(account));
         }
 
-        public AccountDto GetByGlobalId(Guid globalId)
+        public AccountModel GetByGlobalId(Guid globalId)
         {
             var entity = _accountRepository.GetByGlobalId(globalId);
             if (entity == null)
@@ -57,19 +56,19 @@ namespace CrecheApp.Service
            return ConvertToDomain(entity);
         }
 
-        public AccountDto GetById(int id)
+        public AccountModel GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(AccountDto entity)
+        public void Update(AccountModel entity)
         {
             var retval = ConvertToEntity(entity);
             _accountRepository.Update(retval);
         }
 
 
-        private Account ConvertToEntity(AccountDto accountDto)
+        private Account ConvertToEntity(AccountModel accountDto)
         {
             return new Account
             {
@@ -83,9 +82,9 @@ namespace CrecheApp.Service
             };
         }
 
-        private AccountDto ConvertToDomain(Account account)
+        private AccountModel ConvertToDomain(Account account)
         {
-            return new AccountDto
+            return new AccountModel
             {
                 Id = account.Id,
                 GlobalId = account.GlobalId,

@@ -2,7 +2,7 @@
 
 namespace CrecheApp.Domain.Dto
 {
-    public class AccountDto
+    public class AccountModel
     {
         public int Id { get; set; }
         public Guid GlobalId { get; set; }

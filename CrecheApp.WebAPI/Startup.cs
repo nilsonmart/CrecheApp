@@ -41,7 +41,7 @@ namespace CrecheApp.WebAPI
 
             services.AddMvc().AddFluentValidation();
 
-            services.AddTransient<IValidator<AccountDto>, AccountValidator>();
+            services.AddTransient<IValidator<AccountModel>, AccountValidator>();
             services.AddScoped<IAccountRepository, AccountRepository>();
         }
 

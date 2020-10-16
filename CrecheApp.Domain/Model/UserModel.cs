@@ -1,12 +1,12 @@
 ﻿using CrecheApp.Domain.Enum;
-using CrecheApp.Domain.Interface.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
-namespace CrecheApp.Domain.Entity
+namespace CrecheApp.Domain.Dto
 {
-    public class User : ISignature
+    public class UserModel
     {
         public int Id { get; set; }
         public Guid GlobalId { get; set; }
@@ -14,6 +14,7 @@ namespace CrecheApp.Domain.Entity
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        [JsonIgnore]
         public string Password { get; set; }
         public UserRole UserRole { get; set; }
         public bool IsActive { get; set; }

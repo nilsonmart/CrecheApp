@@ -6,12 +6,11 @@
 
   <ItemGroup>
     <Folder Include="Interface\Entity\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Model\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 
 </Project>

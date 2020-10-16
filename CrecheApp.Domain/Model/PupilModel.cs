@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CrecheApp.Domain.Dto
 {
-    class PupilDto
+    class PupilModel
     {
     }
 }

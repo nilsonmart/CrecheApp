@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CrecheApp.Domain.Entity
+﻿namespace CrecheApp.Domain.Entity
 {
     class Employee
     {

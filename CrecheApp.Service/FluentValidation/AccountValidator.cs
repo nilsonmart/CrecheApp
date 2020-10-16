@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace CrecheApp.Service.FluentValidation
 {
-    public class AccountValidator : AbstractValidator<AccountDto
+    public class AccountValidator : AbstractValidator<AccountModel
         >
     {
         public AccountValidator()
