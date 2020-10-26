@@ -1,4 +1,5 @@
-﻿using CrecheApp.Domain.Interface.Service;
+﻿using CrecheApp.Domain.Interface.Helper;
+using CrecheApp.Domain.Interface.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -13,7 +14,7 @@ namespace CrecheApp.Domain.Helpers
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly AppSettings _appSettings;
+        private readonly IAppSettings _appSettings;
 
         public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
         {

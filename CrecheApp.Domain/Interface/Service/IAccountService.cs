@@ -1,4 +1,4 @@
-﻿using CrecheApp.Domain.Dto;
+﻿using CrecheApp.Domain.Model;
 using System;
 using System.Collections.Generic;
 

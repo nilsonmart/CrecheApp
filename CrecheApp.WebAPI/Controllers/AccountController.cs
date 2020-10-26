@@ -1,4 +1,4 @@
-﻿using CrecheApp.Domain.Dto;
+﻿using CrecheApp.Domain.Model;
 using CrecheApp.Domain.Interface.Service;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -32,7 +32,7 @@ namespace CrecheApp.WebAPI.Controllers
         {
             if (globalId == null)
             {
-                return BadRequest("globalId");
+                return BadRequest("GlobalId is empty");
             }
             if (!ModelState.IsValid)
             {
@@ -48,7 +48,7 @@ namespace CrecheApp.WebAPI.Controllers
         {
             if (globalId == null)
             {
-                return BadRequest("globalId empty");
+                return BadRequest("GlobalId is empty");
             }
             _accountService.Delete(globalId.Value);
             return Ok();
@@ -66,7 +66,7 @@ namespace CrecheApp.WebAPI.Controllers
         {
             if (globalId == null)
             {
-                return BadRequest("globalId empty");
+                return BadRequest("GlobalId is empty");
             }
             return Ok(_accountService.GetByGlobalId(globalId.Value));
         }

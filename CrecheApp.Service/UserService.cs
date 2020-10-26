@@ -1,9 +1,8 @@
-﻿using CrecheApp.Domain.Dto;
+﻿using CrecheApp.Domain.Model;
 using CrecheApp.Domain.Entity;
 using CrecheApp.Domain.Helpers;
 using CrecheApp.Domain.Interface.Repository;
 using CrecheApp.Domain.Interface.Service;
-using CrecheApp.Domain.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -14,15 +13,16 @@ using System.Net;
 using System.Net.Sockets;
 using System.Security.Claims;
 using System.Text;
+using CrecheApp.Domain.Interface.Helper;
 
 namespace CrecheApp.Service
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly AppSettings _appSettings;
+        private readonly IAppSettings _appSettings;
 
-        public UserService(IUserRepository userRepository, AppSettings appSettings)
+        public UserService(IUserRepository userRepository, IAppSettings appSettings)
         {
             _userRepository = userRepository;
             _appSettings = appSettings;

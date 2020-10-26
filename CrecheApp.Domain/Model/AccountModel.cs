@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CrecheApp.Domain.Dto
+namespace CrecheApp.Domain.Model
 {
     public class AccountModel
     {

@@ -1,10 +1,8 @@
 ﻿using CrecheApp.Domain.Enum;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
 
-namespace CrecheApp.Domain.Dto
+namespace CrecheApp.Domain.Model
 {
     public class UserModel
     {

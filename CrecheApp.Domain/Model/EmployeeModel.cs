@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrecheApp.Domain.Dto
+namespace CrecheApp.Domain.Model
 {
     class EmployeeModel
     {

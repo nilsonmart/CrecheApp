@@ -1,4 +1,4 @@
-﻿using CrecheApp.Domain.Dto;
+﻿using CrecheApp.Domain.Model;
 using CrecheApp.Domain.Entity;
 using CrecheApp.Domain.Interface.Repository;
 using CrecheApp.Domain.Interface.Service;
