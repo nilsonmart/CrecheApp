@@ -1,6 +1,6 @@
 ﻿namespace CrecheApp.Domain.Entity
 {
-    class Employee
+    public class Staff
     {
     }
 }

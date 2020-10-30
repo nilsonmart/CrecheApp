@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CrecheApp.Domain.Model
 {
-    class PupilModel
+    public class PupilModel
     {
     }
 }

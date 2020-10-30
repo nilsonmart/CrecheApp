@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CrecheApp.Domain.Model
 {
-    class EmployeeModel
+    public class StaffModel
     {
     }
 }

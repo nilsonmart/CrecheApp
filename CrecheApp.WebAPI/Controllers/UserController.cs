@@ -44,7 +44,7 @@ namespace CrecheApp.WebAPI.Controllers
         {
             if (globalId == null)
             {
-                return BadRequest("GlobalId is empty");
+                return BadRequest(new { message = "GlobalId is empty" });
             }
             if (!ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace CrecheApp.WebAPI.Controllers
         {
             if (globalId == null)
             {
-                return BadRequest("GlobalId is empty");
+                return BadRequest(new { message = "GlobalId is empty" });
             }
             _userService.Delete(globalId.Value);
             return Ok();
@@ -78,7 +78,7 @@ namespace CrecheApp.WebAPI.Controllers
         {
             if (globalId == null)
             {
-                return BadRequest("GlobalId empty");
+                return BadRequest(new { message = "GlobalId empty" });
             }
             return Ok(_userService.GetByGlobalId(globalId.Value));
         }
