@@ -8,7 +8,7 @@ namespace CrecheApp.Domain.Entity
         public int Id { get; set; }
         public Guid GlobalId { get; set; }
         public int AccountId { get; set; }
-        public string Name { get; set; }
+        public string ClassRoomName { get; set; }
         public string ClassRoomCode { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }

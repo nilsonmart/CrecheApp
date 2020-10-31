@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace CrecheApp.Domain.Model
         public int Id { get; set; }
         public Guid GlobalId { get; set; }
         public int AccountId { get; set; }
-        public string Name { get; set; }
+        public string ClassRoomName { get; set; }
         public string ClassRoomCode { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
@@ -21,5 +22,6 @@ namespace CrecheApp.Domain.Model
         public string ClassAverageEvaluation { get; set; }
         public virtual IList<PupilModel> Pupils { get; set; }
         public virtual IList<StaffModel> Staffs { get; set; }
+        public IList<IFormFile> Files { get; set; }
     }
 }

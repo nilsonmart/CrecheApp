@@ -1,7 +1,5 @@
 ﻿using CrecheApp.Domain.Enum;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CrecheApp.Domain.Entity
 {
