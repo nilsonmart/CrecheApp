@@ -1,4 +1,5 @@
-﻿using CrecheApp.Domain.Model;
+﻿using CrecheApp.Domain.Entity;
+using CrecheApp.Domain.Model;
 using System;
 using System.Collections.Generic;
 
@@ -7,11 +8,11 @@ namespace CrecheApp.Domain.Interface.Service
     public interface IUserService
     {
         AuthenticateResponseModel Authenticate(AuthenticateRequestModel model);
-        void Add(UserModel entity);
-        UserModel GetById(int id);
-        UserModel GetByGlobalId(Guid globalId);
-        IEnumerable<UserModel> GetAll();
-        void Update(UserModel entity);
+        void Add(User entity);
+        User GetById(int id);
+        User GetByGlobalId(Guid globalId);
+        IEnumerable<User> GetAll();
+        void Update(User entity);
         void Delete(Guid globalId);
     }
 }

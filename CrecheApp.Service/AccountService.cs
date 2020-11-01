@@ -17,13 +17,12 @@ namespace CrecheApp.Service
             _accountRepository = accountRepository;
         }
 
-        public void Add(AccountModel entity)
+        public void Add(Account account)
         {
-            var retval = ConvertToEntity(entity);
-            retval.GlobalId = Guid.NewGuid();
-            retval.CreationUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            retval.CreationDate = DateTime.UtcNow;
-            _accountRepository.Add(retval);
+            account.GlobalId = Guid.NewGuid();
+            account.CreationUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            account.CreationDate = DateTime.UtcNow;
+            _accountRepository.Add(account);
         }
 
         public void Delete(Guid globalId)
@@ -36,66 +35,34 @@ namespace CrecheApp.Service
             _accountRepository.Delete(model);
         }
 
-        public IEnumerable<AccountModel> GetAll()
+        public IEnumerable<Account> GetAll()
         {
-            var retval = _accountRepository.GetAll().ToList();
-            if (retval == null)
+            var account = _accountRepository.GetAll().ToList();
+            if (account == null)
             {
                 return null;
             }
-            return retval.Select(account => ConvertToDomain(account));
+            return account;
         }
 
-        public AccountModel GetByGlobalId(Guid globalId)
+        public Account GetByGlobalId(Guid globalId)
         {
-            var entity = _accountRepository.GetByGlobalId(globalId);
-            if (entity == null)
+            var account = _accountRepository.GetByGlobalId(globalId);
+            if (account == null)
             {
                 return null;
             }
-           return ConvertToDomain(entity);
+           return account;
         }
 
-        public AccountModel GetById(int id)
+        public Account GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(AccountModel entity)
+        public void Update(Account account)
         {
-            var retval = ConvertToEntity(entity);
-            _accountRepository.Update(retval);
-        }
-
-
-        private Account ConvertToEntity(AccountModel model)
-        {
-            return new Account
-            {
-                Id = model.Id,
-                GlobalId = model.GlobalId,
-                Name = model.Name,
-                IsActive = model.IsActive,
-                CreationUser = model.CreationUser,
-                CreationDate = model.CreationDate,
-                LastChangeUser = model.LastChangeUser,
-                LastChangeDate = model.LastChangeDate,
-            };
-        }
-
-        private AccountModel ConvertToDomain(Account entity)
-        {
-            return new AccountModel
-            {
-                Id = entity.Id,
-                GlobalId = entity.GlobalId,
-                Name = entity.Name,
-                IsActive = entity.IsActive,
-                CreationUser = entity.CreationUser,
-                CreationDate = entity.CreationDate,
-                LastChangeUser = entity.LastChangeUser,
-                LastChangeDate = entity.LastChangeDate,
-            };
+            _accountRepository.Update(account);
         }
     }
 }

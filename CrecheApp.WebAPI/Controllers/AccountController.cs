@@ -2,6 +2,7 @@
 using CrecheApp.Domain.Interface.Service;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using CrecheApp.Domain.Entity;
 
 namespace CrecheApp.WebAPI.Controllers
 {
@@ -16,7 +17,7 @@ namespace CrecheApp.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AccountModel account)
+        public IActionResult Create(Account account)
         {
             if (!ModelState.IsValid)
             {
@@ -28,7 +29,7 @@ namespace CrecheApp.WebAPI.Controllers
 
         [HttpPut]
         [Route("{globalId:guid}")]
-        public IActionResult Update(Guid? globalId, [FromBody]AccountModel account)
+        public IActionResult Update(Guid? globalId, [FromBody]Account account)
         {
             if (globalId == null)
             {

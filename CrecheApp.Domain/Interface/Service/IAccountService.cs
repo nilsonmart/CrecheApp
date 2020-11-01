@@ -1,4 +1,5 @@
-﻿using CrecheApp.Domain.Model;
+﻿using CrecheApp.Domain.Entity;
+using CrecheApp.Domain.Model;
 using System;
 using System.Collections.Generic;
 
@@ -6,11 +7,11 @@ namespace CrecheApp.Domain.Interface.Service
 {
     public interface IAccountService
     {
-        void Add(AccountModel entity);
-        AccountModel GetById(int id);
-        AccountModel GetByGlobalId(Guid globalId);
-        IEnumerable<AccountModel> GetAll();
-        void Update(AccountModel entity);
+        void Add(Account entity);
+        Account GetById(int id);
+        Account GetByGlobalId(Guid globalId);
+        IEnumerable<Account> GetAll();
+        void Update(Account entity);
         void Delete(Guid globalId);
     }
 }

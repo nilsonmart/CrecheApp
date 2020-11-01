@@ -14,7 +14,6 @@ namespace CrecheApp.Domain.Model
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Token { get; set; }
-        public UserRole UserRole { get; set; }
         public bool IsActive { get; set; }
         public string CreationUser { get; set; }
         public DateTime CreationDate { get; set; }
@@ -29,6 +28,11 @@ namespace CrecheApp.Domain.Model
             LastName = user.LastName;
             Email = user.Email;           
             Token = token;
+            IsActive = user.IsActive;
+            CreationDate = user.CreationDate;
+            CreationUser = user.CreationUser;
+            LastChangeDate = user.LastChangeDate;
+            LastChangeUser = user.LastChangeUser;           
         }
     }
 }

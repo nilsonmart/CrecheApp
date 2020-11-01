@@ -55,100 +55,54 @@ namespace CrecheApp.Service
             return tokenHandler.WriteToken(token);
         }
 
-        public void Add(UserModel domain)
+        public void Add(User user)
         {
-            var entity = ConvertToEntity(domain);
-            entity.GlobalId = Guid.NewGuid();
-            entity.CreationDate = DateTime.UtcNow;
-            entity.CreationUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            entity.FirstAuthentication = DateTime.UtcNow;
-            entity.Password = GenerateRandomPassword();
-            _userRepository.Add(entity);
+            user.GlobalId = Guid.NewGuid();
+            user.CreationDate = DateTime.UtcNow;
+            user.CreationUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            user.FirstAuthentication = DateTime.UtcNow;
+            user.Password = GenerateRandomPassword();
+            _userRepository.Add(user);
         }
 
         public void Delete(Guid globalId)
         {
-            var model = _userRepository.GetByGlobalId(globalId);
-            if (model == null)
+            var user = _userRepository.GetByGlobalId(globalId);
+            if (user == null)
             {
                 throw new NullReferenceException("object not found.");
             }
-            _userRepository.Delete(model);
+            _userRepository.Delete(user);
         }
 
-        public IEnumerable<UserModel> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            var retval = _userRepository.GetAll().ToList();
-            if (retval == null)
+            var user = _userRepository.GetAll().ToList();
+            if (user == null)
             {
                 return null;
             }
-            return retval.Select(user => ConvertToDomain(user));
+            return user;
         }
 
-        public UserModel GetByGlobalId(Guid globalId)
+        public User GetByGlobalId(Guid globalId)
         {
-            var entity = _userRepository.GetByGlobalId(globalId);
-            if (entity == null)
+            var user = _userRepository.GetByGlobalId(globalId);
+            if (user == null)
             {
                 return null;
             }
-            return ConvertToDomain(entity);
+            return user;
         }
 
-        public UserModel GetById(int id)
+        public User GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(UserModel entity)
+        public void Update(User user)
         {
-            var retval = ConvertToEntity(entity);
-            _userRepository.Update(retval);
-        }
-
-        private User ConvertToEntity(UserModel domain)
-        {
-            return new User
-            {
-                Id = domain.Id,
-                GlobalId = domain.GlobalId,
-                AccountId = domain.AccountId,
-                FirstName = domain.FirstName,
-                LastName = domain.LastName,
-                Email = domain.Email,
-                Password = domain.Password,
-                IsActive = domain.IsActive,
-                CreationUser = domain.CreationUser,
-                CreationDate = domain.CreationDate,
-                LastChangeUser = domain.LastChangeUser,
-                LastChangeDate = domain.LastChangeDate,
-                FirstAuthentication = domain.FirstAuthentication,
-                LastAuthentication = domain.LastAuthentication,
-                LastAuthenticationIPAddress = domain.LastAuthenticationIPAddress
-            };
-        }
-
-        private UserModel ConvertToDomain(User entity)
-        {
-            return new UserModel
-            {
-                Id = entity.Id,
-                GlobalId = entity.GlobalId,
-                AccountId = entity.AccountId,
-                FirstName = entity.FirstName,
-                LastName = entity.LastName,
-                Email = entity.Email,
-                Password = entity.Password,
-                IsActive = entity.IsActive,
-                CreationUser = entity.CreationUser,
-                CreationDate = entity.CreationDate,
-                LastChangeUser = entity.LastChangeUser,
-                LastChangeDate = entity.LastChangeDate,
-                FirstAuthentication = entity.FirstAuthentication,
-                LastAuthentication = entity.LastAuthentication,
-                LastAuthenticationIPAddress = entity.LastAuthenticationIPAddress
-            };
+            _userRepository.Update(user);
         }
 
         public static string GetLocalIPAddress()

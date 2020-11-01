@@ -1,9 +1,10 @@
-﻿using CrecheApp.Domain.Model;
+﻿using CrecheApp.Domain.Entity;
+using CrecheApp.Domain.Model;
 using FluentValidation;
 
 namespace CrecheApp.Service.FluentValidation
 {
-    public class UserValidator : AbstractValidator<UserModel>
+    public class UserValidator : AbstractValidator<User>
     {
         public UserValidator()
         {
@@ -11,7 +12,6 @@ namespace CrecheApp.Service.FluentValidation
             RuleFor(m => m.FirstName).NotEmpty();
             RuleFor(m => m.LastName).NotEmpty();
             RuleFor(m => m.Password).NotEmpty();
-            RuleFor(m => m.UserRole).NotEmpty();
         }
     }
 }
