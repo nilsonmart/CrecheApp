@@ -23,5 +23,10 @@ namespace CrecheApp.Domain.Model
         public virtual IList<PupilModel> Pupils { get; set; }
         public virtual IList<StaffModel> Staffs { get; set; }
         public IList<IFormFile> Files { get; set; }
+
+        public string CreationUser { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string LastChangeUser { get; set; }
+        public DateTime? LastChangeDate { get; set; }
     }
 }

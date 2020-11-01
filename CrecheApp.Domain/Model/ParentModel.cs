@@ -17,6 +17,10 @@ namespace CrecheApp.Domain.Model
         public string FiscalNumber { get; set; }
         public virtual IList<AddressModel> Addresses { get; set; }
         public virtual IList<PupilModel> Pupils { get; set; }
-        public virtual IList<Note> Notes { get; set; }
+        public virtual IList<NoteModel> Notes { get; set; }
+        public string CreationUser { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string LastChangeUser { get; set; }
+        public DateTime? LastChangeDate { get; set; }
     }
 }

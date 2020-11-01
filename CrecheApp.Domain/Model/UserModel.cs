@@ -1,5 +1,4 @@
-﻿using CrecheApp.Domain.Enum;
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 
 namespace CrecheApp.Domain.Model
@@ -14,7 +13,6 @@ namespace CrecheApp.Domain.Model
         public string Email { get; set; }
         [JsonIgnore]
         public string Password { get; set; }
-        public UserRole UserRole { get; set; }
         public bool IsActive { get; set; }
         public string CreationUser { get; set; }
         public DateTime CreationDate { get; set; }

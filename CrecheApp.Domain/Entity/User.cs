@@ -1,8 +1,6 @@
 ﻿using CrecheApp.Domain.Enum;
 using CrecheApp.Domain.Interface.Model;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CrecheApp.Domain.Entity
 {
@@ -15,7 +13,6 @@ namespace CrecheApp.Domain.Entity
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public UserRole UserRole { get; set; }
         public bool IsActive { get; set; }
         public string CreationUser { get; set; }
         public DateTime CreationDate { get; set; }

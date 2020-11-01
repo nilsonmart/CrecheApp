@@ -68,33 +68,33 @@ namespace CrecheApp.Service
         }
 
 
-        private Account ConvertToEntity(AccountModel accountDto)
+        private Account ConvertToEntity(AccountModel model)
         {
             return new Account
             {
-                Id = accountDto.Id,
-                GlobalId = accountDto.GlobalId,
-                Name = accountDto.Name,
-                IsActive = accountDto.IsActive,
-                CreationUser = accountDto.CreationUser,
-                CreationDate = accountDto.CreationDate,
-                LastChangeUser = accountDto.LastChangeUser,
-                LastChangeDate = accountDto.LastChangeDate,
+                Id = model.Id,
+                GlobalId = model.GlobalId,
+                Name = model.Name,
+                IsActive = model.IsActive,
+                CreationUser = model.CreationUser,
+                CreationDate = model.CreationDate,
+                LastChangeUser = model.LastChangeUser,
+                LastChangeDate = model.LastChangeDate,
             };
         }
 
-        private AccountModel ConvertToDomain(Account account)
+        private AccountModel ConvertToDomain(Account entity)
         {
             return new AccountModel
             {
-                Id = account.Id,
-                GlobalId = account.GlobalId,
-                Name = account.Name,
-                IsActive = account.IsActive,
-                CreationUser = account.CreationUser,
-                CreationDate = account.CreationDate,
-                LastChangeUser = account.LastChangeUser,
-                LastChangeDate = account.LastChangeDate,
+                Id = entity.Id,
+                GlobalId = entity.GlobalId,
+                Name = entity.Name,
+                IsActive = entity.IsActive,
+                CreationUser = entity.CreationUser,
+                CreationDate = entity.CreationDate,
+                LastChangeUser = entity.LastChangeUser,
+                LastChangeDate = entity.LastChangeDate,
             };
         }
     }

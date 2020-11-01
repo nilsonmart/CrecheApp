@@ -1,9 +1,10 @@
-﻿using System;
+﻿using CrecheApp.Domain.Interface.Model;
+using System;
 using System.Collections.Generic;
 
 namespace CrecheApp.Domain.Entity
 {
-    public class ClassRoom
+    public class ClassRoom : ISignature
     {
         public int Id { get; set; }
         public Guid GlobalId { get; set; }
@@ -21,5 +22,9 @@ namespace CrecheApp.Domain.Entity
         public virtual IList<Pupil> Pupils { get; set; }
         public virtual IList<Staff> Staffs { get; set; }
         public virtual IList<FileData> Files { get; set; }
+        public string CreationUser { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string LastChangeUser { get; set; }
+        public DateTime? LastChangeDate { get; set; }
     }
 }

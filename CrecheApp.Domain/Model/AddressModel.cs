@@ -14,5 +14,9 @@ namespace CrecheApp.Domain.Model
         public string City { get; set; }
         public string ZipCode { get; set; }
         public string Country { get; set; }
+        public string CreationUser { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string LastChangeUser { get; set; }
+        public DateTime? LastChangeDate { get; set; }
     }
 }

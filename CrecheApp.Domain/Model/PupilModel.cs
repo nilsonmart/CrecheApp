@@ -17,7 +17,10 @@ namespace CrecheApp.Domain.Model
         public bool NeedMedicalTreatments { get; set; }
         public string MedicalsTreatments { get; set; }
         public virtual IList<ParentModel> Parents { get; set; }
-        public ClassRoomModel ClassRoom { get; set; }
         public virtual IList<IFormFile> Files { get; set; }
+        public string CreationUser { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string LastChangeUser { get; set; }
+        public DateTime? LastChangeDate { get; set; }
     }
 }
